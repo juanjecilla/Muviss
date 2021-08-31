@@ -8,7 +8,6 @@ import com.scallop.muviss.domain.entities.ResultWrapperEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsBaseUseCase
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
-import com.scallop.muviss.domain.usecases.GetTvShowDetailsBaseUseCase
 import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.mappers.TvShowMapper
 import com.scallop.muviss.ui.list.TvShowListFragment.Companion.STARTING_PAGE_INDEX
@@ -21,8 +20,8 @@ import kotlinx.coroutines.withContext
 
 class TvShowListViewModel(
     private val useCase: GetTopRatedTvShowsBaseUseCase,
-    private val mMapper: TvShowMapper,
-    private val mDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val mapper: TvShowMapper,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val _data = MutableLiveData<TvShowListState>()
@@ -37,7 +36,7 @@ class TvShowListViewModel(
     fun getTopRatedTShows(page: Int) {
         _data.value = TvShowListState.TvShowListLoading(true)
         viewModelScope.launch {
-            val results = withContext(mDispatcher) {
+            val results = withContext(dispatcher) {
                 useCase(GetTopRatedTvShowsUseCase.Params(page))
             }
             results.map {
@@ -45,7 +44,7 @@ class TvShowListViewModel(
 
                 when (it) {
                     is ResultWrapperEntity.Success<*> -> {
-                        items.addAll(mMapper.mapResults(it as ResultWrapperEntity.Success<List<TvShowItemEntity>>).value)
+                        items.addAll(mapper.mapResults(it as ResultWrapperEntity.Success<List<TvShowItemEntity>>).value)
                         _data.value = TvShowListState.TvShowListItems(items)
                     }
 

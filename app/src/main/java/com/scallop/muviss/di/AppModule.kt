@@ -6,8 +6,11 @@ import com.scallop.muviss.data.repository.RemoteDataSource
 import com.scallop.muviss.data.repository.RemoteDataSourceImpl
 import com.scallop.muviss.data.repository.RepositoryImpl
 import com.scallop.muviss.domain.repositories.TheMovieDbRepository
+import com.scallop.muviss.domain.usecases.GetSimilarTvShowsUseCase
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
+import com.scallop.muviss.domain.usecases.GetTvShowDetailsUseCase
 import com.scallop.muviss.mappers.TvShowMapper
+import com.scallop.muviss.ui.detail.TvShowDetailViewModel
 import com.scallop.muviss.ui.list.TvShowListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -30,6 +33,8 @@ val repositoryModule = module {
 
 val useCaseModule = module {
     factory { GetTopRatedTvShowsUseCase(get()) }
+    factory { GetTvShowDetailsUseCase(get()) }
+    factory { GetSimilarTvShowsUseCase(get()) }
 }
 
 val networkModule = module {
@@ -40,6 +45,13 @@ val networkModule = module {
 val viewModelModule = module {
     viewModel {
         TvShowListViewModel(get(GetTopRatedTvShowsUseCase::class), TvShowMapper())
+    }
+    viewModel {
+        TvShowDetailViewModel(
+            get(GetTvShowDetailsUseCase::class),
+            get(GetSimilarTvShowsUseCase::class),
+            TvShowMapper()
+        )
     }
 }
 

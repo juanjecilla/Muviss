@@ -5,4 +5,4 @@ data class TvShowDetail(
     var name: String?,
     var posterPath: String?,
     var overview: String?
-)
+) : TvShow()

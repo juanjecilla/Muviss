@@ -5,4 +5,4 @@ data class TvShowItem(
     var name: String?,
     var posterPath: String?,
     var voteAverage: Double?
-)
+) : TvShow()

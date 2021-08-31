@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scallop.muviss.R
@@ -99,7 +100,13 @@ class TvShowListFragment : Fragment() {
     }
 
     private fun showDetail(item: TvShowItem) {
+        item.id?.let {
+            val action = TvShowListFragmentDirections.showDetail()
+            action.tvShowId = it
 
+            val navController = view?.findNavController()
+            navController?.navigate(action)
+        }
     }
 
     companion object {

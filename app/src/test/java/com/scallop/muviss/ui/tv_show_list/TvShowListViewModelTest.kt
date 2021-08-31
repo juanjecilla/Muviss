@@ -21,7 +21,7 @@ import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
 @ExperimentalCoroutinesApi
-class TvShowListViewModelTest {
+class TvShowDetailViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 

@@ -11,6 +11,28 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_tv_show_list">
 
+        <action
+            android:id="@+id/show_detail"
+            app:destination="@id/tv_show_detail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/tv_show_list_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/tv_show_detail"
+        android:name="com.scallop.muviss.ui.detail.TvShowDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_tv_show_detail">
+
+        <argument
+            android:name="tv_show_id"
+            android:defaultValue="-1L"
+            app:argType="long" />
+
     </fragment>
 
 </navigation>
