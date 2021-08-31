@@ -10,22 +10,22 @@ class TvShowMapper {
 
     fun mapResults(data: ResultWrapperEntity.Success<List<TvShowItemEntity>>) =
         ResultWrapperEntity.Success(
-            this.mapTvShowItem(data.value)
+            this.mapTvShowItems(data.value)
         )
 
     fun mapResult(data: ResultWrapperEntity.Success<TvShowItemEntity>) =
         ResultWrapperEntity.Success(
-            mapTvShowItem(data.value)
+            mapTvShowItems(data.value)
         )
 
     fun mapException(data: ResultWrapperEntity.GenericError) = ResultWrapperEntity.GenericError(
         data.code, data.exception
     )
 
-    private fun mapTvShowItem(results: List<TvShowItemEntity>) =
-        results.map { this.mapTvShowItem(it) }
+    fun mapTvShowItems(results: List<TvShowItemEntity>) =
+        results.map { this.mapTvShowItems(it) }
 
-    private fun mapTvShowItem(data: TvShowItemEntity) = TvShowItem(
+    private fun mapTvShowItems(data: TvShowItemEntity) = TvShowItem(
         id = data.id,
         name = data.name,
         posterPath = data.posterPath,

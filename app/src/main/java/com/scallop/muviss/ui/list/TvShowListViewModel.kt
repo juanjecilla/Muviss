@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.scallop.muviss.domain.entities.ResultWrapperEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
+import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsBaseUseCase
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
+import com.scallop.muviss.domain.usecases.GetTvShowDetailsBaseUseCase
 import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.mappers.TvShowMapper
 import com.scallop.muviss.ui.list.TvShowListFragment.Companion.STARTING_PAGE_INDEX
@@ -18,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TvShowListViewModel(
-    private val useCase: GetTopRatedTvShowsUseCase,
+    private val useCase: GetTopRatedTvShowsBaseUseCase,
     private val mMapper: TvShowMapper,
     private val mDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
