@@ -4,6 +4,7 @@ import android.app.Application
 import com.scallop.muviss.di.networkModule
 import com.scallop.muviss.di.repositoryModule
 import com.scallop.muviss.di.useCaseModule
+import com.scallop.muviss.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -21,6 +22,7 @@ class AppClass : Application() {
                 listOf(
                     networkModule,
                     repositoryModule,
+                    viewModelModule,
                     useCaseModule,
                 )
             )

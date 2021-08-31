@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 
 data class TvShowItemData(
     @Json(name = "id") var id: Long?,
-    @Json(name = "title") var title: String?,
-    @Json(name = "poster_path") var posterPath: String?
+    @Json(name = "name") var name: String?,
+    @Json(name = "poster_path") var posterPath: String?,
+    @Json(name = "vote_average") var voteAverage: Double?
 )

@@ -3,7 +3,6 @@ package com.scallop.muviss.di
 import android.content.Context
 import com.scallop.muviss.BuildConfig
 import com.scallop.muviss.common.Properties
-import com.scallop.muviss.common.SecurityUtils
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Cache
@@ -38,15 +37,8 @@ private fun httpClient(context: Context): OkHttpClient {
         val original = chain.request()
         val originalHttpUrl = original.url
 
-        val ts = System.currentTimeMillis()
-        val privateKey = Network.getAPIKey()
-        val publicKey = "<<<PUBLIC_API_KEY>>>"
-
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter("apikey", publicKey)
-            .addQueryParameter("ts", ts.toString())
-            .addQueryParameter("hash", SecurityUtils.md5("$ts$privateKey$publicKey"))
-            .build()
+            .addQueryParameter("api_key", "b66ffea8276ce576d60df52600822c88").build()
 
         val requestBuilder = original.newBuilder()
             .header("Cache-Control", "public, max-age=${Properties.MAX_SECONDS_VALID_CACHE}")

@@ -1,6 +1,6 @@
-package com.scallop.muviss.domain.entities
+package com.scallop.muviss.entities
 
-data class TvShowDetailEntity(
+data class TvShowDetail(
     var id: Long?,
     var name: String?,
     var posterPath: String?,

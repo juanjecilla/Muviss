@@ -11,11 +11,11 @@ import retrofit2.http.QueryMap
 interface TheMovieDbApi {
 
     @GET("/3/tv/top_rated")
-    fun getTopRatedTvShows(@Query("page") page: Int): PagedResultData<TvShowItemData>
+    suspend fun getTopRatedTvShows(@Query("page") page: Int): PagedResultData<TvShowItemData>
 
     @GET("/3/tv/{tv_id}")
-    fun getTvShowDetails(@Path("tv_id") tvId: Long): TvShowDetailData
+    suspend fun getTvShowDetails(@Path("tv_id") tvId: Long): TvShowDetailData
 
     @GET("/3/tv/{tv_id}")
-    fun getSimilarTvShows(@Path("tv_id") tvId: Long, @Query("page") page: Int): PagedResultData<TvShowItemData>
+    suspend fun getSimilarTvShows(@Path("tv_id") tvId: Long, @Query("page") page: Int): PagedResultData<TvShowItemData>
 }

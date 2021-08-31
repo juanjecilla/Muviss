@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.scallop.muviss">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AppClass"
         android:allowBackup="true"
@@ -11,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Muviss">
         <activity
-            android:name=".ui.splash.SplashActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:theme="@style/Theme.Muviss.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,44 +1,43 @@
-package com.scallop.muviss.data.mappers
+package com.scallop.muviss.mappers
 
-import com.scallop.muviss.data.entitites.ResultWrapperData
-import com.scallop.muviss.data.entitites.TvShowDetailData
-import com.scallop.muviss.data.entitites.TvShowItemData
 import com.scallop.muviss.domain.entities.ResultWrapperEntity
 import com.scallop.muviss.domain.entities.TvShowDetailEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
+import com.scallop.muviss.entities.TvShowDetail
+import com.scallop.muviss.entities.TvShowItem
 
-class DataEntityMapper {
+class TvShowMapper {
 
-    fun mapResults(data: ResultWrapperData.Success<List<TvShowItemData>>) =
+    fun mapResults(data: ResultWrapperEntity.Success<List<TvShowItemEntity>>) =
         ResultWrapperEntity.Success(
             this.mapTvShowItem(data.value)
         )
 
-    fun mapResult(data: ResultWrapperData.Success<TvShowItemData>) =
+    fun mapResult(data: ResultWrapperEntity.Success<TvShowItemEntity>) =
         ResultWrapperEntity.Success(
             mapTvShowItem(data.value)
         )
 
-    fun mapException(data: ResultWrapperData.GenericError) = ResultWrapperEntity.GenericError(
+    fun mapException(data: ResultWrapperEntity.GenericError) = ResultWrapperEntity.GenericError(
         data.code, data.exception
     )
 
-    private fun mapTvShowItem(results: List<TvShowItemData>) =
+    private fun mapTvShowItem(results: List<TvShowItemEntity>) =
         results.map { this.mapTvShowItem(it) }
 
-    private fun mapTvShowItem(data: TvShowItemData) = TvShowItemEntity(
+    private fun mapTvShowItem(data: TvShowItemEntity) = TvShowItem(
         id = data.id,
         name = data.name,
         posterPath = data.posterPath,
         voteAverage = data.voteAverage
     )
 
-    fun mapTvShowDetailResult(data: ResultWrapperData.Success<TvShowDetailData>) =
+    fun mapTvShowDetailResult(data: ResultWrapperEntity.Success<TvShowDetailEntity>) =
         ResultWrapperEntity.Success(
             mapTvShowDetail(data.value)
         )
 
-    private fun mapTvShowDetail(data: TvShowDetailData) = TvShowDetailEntity(
+    private fun mapTvShowDetail(data: TvShowDetailEntity) = TvShowDetail(
         id = data.id,
         name = data.name,
         posterPath = data.posterPath,
