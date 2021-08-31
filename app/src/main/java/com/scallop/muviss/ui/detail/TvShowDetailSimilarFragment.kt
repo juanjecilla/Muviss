@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
 import com.scallop.muviss.R
 import com.scallop.muviss.databinding.FragmentTvShowDetailSimilarBinding
 import com.scallop.muviss.entities.TvShowItem
@@ -39,7 +40,9 @@ class TvShowDetailSimilarFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            tvShowDetailTitle.text = tvShow.name
+            tvShowDetailSimilarTitle.text = tvShow.name
+            tvShowDetailSimilarImage.load("https://image.tmdb.org/t/p/w500/${tvShow.posterPath}")
+            tvShowDetailSimilarOverview.text = tvShow.overview
         }
     }
 

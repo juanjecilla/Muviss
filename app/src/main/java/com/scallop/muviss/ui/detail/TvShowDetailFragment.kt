@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.scallop.muviss.R
@@ -13,6 +14,8 @@ import com.scallop.muviss.common.Properties
 import com.scallop.muviss.databinding.FragmentTvShowDetailBinding
 import com.scallop.muviss.ui.commons.viewBinding
 import com.scallop.muviss.ui.commons.visible
+import com.scallop.muviss.ui.commons.visibleWithExpandAnimation
+import com.scallop.muviss.ui.list.TvShowListFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TvShowDetailFragment : Fragment() {
@@ -58,8 +61,21 @@ class TvShowDetailFragment : Fragment() {
                             (adapter.itemCount / Properties.ITEMS_PER_PAGE) + 1
                         )
                     }
+
+                    seeDetailsButton.visibleWithExpandAnimation(position != 0)
                 }
             })
+
+            seeDetailsButton.setOnClickListener {
+                val currentTvShowId = adapter.getItemIdAtPosition(detailViewPager.currentItem)
+                currentTvShowId?.let {
+                    val action = TvShowListFragmentDirections.showDetail()
+                    action.tvShowId = it
+
+                    val navController = view.findNavController()
+                    navController.navigate(action)
+                }
+            }
         }
 
         viewModel.data.observe(viewLifecycleOwner, {

@@ -1,6 +1,5 @@
 package com.scallop.muviss.ui.detail
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -31,9 +30,22 @@ class TvShowDetailPagerAdapter(
     }
 
     fun addItems(items: List<TvShow>) {
-        Log.d("HOLA", "${items.size} ${data.size}")
         val prevSize = data.size
         data.addAll(items)
         notifyItemRangeInserted(prevSize, items.size)
+    }
+
+    fun clear() {
+        val currentCount = data.size
+        data.clear()
+        notifyItemRangeRemoved(0, currentCount)
+    }
+
+    fun getItemIdAtPosition(position: Int): Long? {
+        return when (val item = data[position]) {
+            is TvShowDetail -> item.id
+            is TvShowItem -> item.id
+            else -> throw IllegalArgumentException()
+        }
     }
 }

@@ -3,9 +3,11 @@ package com.scallop.muviss.data.mappers
 import com.scallop.muviss.data.entitites.ResultWrapperData
 import com.scallop.muviss.data.entitites.TvShowDetailData
 import com.scallop.muviss.data.entitites.TvShowItemData
+import com.scallop.muviss.data.entitites.TvShowSeasonData
 import com.scallop.muviss.domain.entities.ResultWrapperEntity
 import com.scallop.muviss.domain.entities.TvShowDetailEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
+import com.scallop.muviss.domain.entities.TvShowSeasonEntity
 
 class DataEntityMapper {
 
@@ -30,7 +32,8 @@ class DataEntityMapper {
         id = data.id,
         name = data.name,
         posterPath = data.posterPath,
-        voteAverage = data.voteAverage
+        voteAverage = data.voteAverage,
+        overview = data.overview
     )
 
     fun mapTvShowDetailResult(data: ResultWrapperData.Success<TvShowDetailData>) =
@@ -42,6 +45,21 @@ class DataEntityMapper {
         id = data.id,
         name = data.name,
         posterPath = data.posterPath,
-        overview = data.overview
+        overview = data.overview,
+        numberOfSeasons = data.numberOfSeasons,
+        status = data.status,
+        seasons = mapSeasons(data.seasons),
+    )
+
+    private fun mapSeasons(seasons: List<TvShowSeasonData>?) = seasons?.map { mapSeason(it) }
+
+    private fun mapSeason(data: TvShowSeasonData) = TvShowSeasonEntity(
+        id = data.id,
+        name = data.name,
+        posterPath = data.posterPath,
+        overview = data.overview,
+        airDate = data.airDate,
+        seasonNumber = data.seasonNumber,
+        episodeCount = data.episodeCount,
     )
 }

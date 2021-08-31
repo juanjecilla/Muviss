@@ -1,9 +1,12 @@
 package com.scallop.muviss.entities
 
-data class TvShowItem(
+
+data class TvShowSeason(
     var id: Long?,
     var name: String?,
     var posterPath: String?,
-    var voteAverage: Double?,
     var overview: String?,
-) : TvShow()
+    var airDate: String?,
+    var seasonNumber: Int?,
+    var episodeCount: Int?
+)

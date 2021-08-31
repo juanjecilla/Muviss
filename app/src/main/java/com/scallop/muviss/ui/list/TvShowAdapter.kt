@@ -1,6 +1,5 @@
 package com.scallop.muviss.ui.list
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +35,6 @@ class TvShowAdapter(private val onClick: (TvShowItem) -> (Unit)) :
 
         fun bind(item: TvShowItem) {
             this.item = item
-            Log.d("HOLA", item.toString())
             with(binding) {
                 tvShowTitle.text = item.name
                 tvShowImage.load("https://image.tmdb.org/t/p/w500/${item.posterPath}")

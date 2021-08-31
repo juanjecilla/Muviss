@@ -3,4 +3,10 @@
     <string name="base_url_service">https://api.themoviedb.org/</string>
     <string name="empty_label">Ops... No results available...</string>
     <string name="tv_show_image">Tv show image</string>
+    <string name="overview_label">Overview</string>
+    <string name="see_all_details_label">See all details</string>
+    <string name="seasons_label">%d Seasons</string>
+    <string name="season_label">%d Season</string>
+    <string name="episodes_label">%d Episodes</string>
+    <string name="episode_label">%d Episode</string>
 </resources>

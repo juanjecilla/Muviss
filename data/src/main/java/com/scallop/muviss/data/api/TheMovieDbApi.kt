@@ -6,7 +6,6 @@ import com.scallop.muviss.data.entitites.TvShowItemData
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.QueryMap
 
 interface TheMovieDbApi {
 
@@ -17,5 +16,8 @@ interface TheMovieDbApi {
     suspend fun getTvShowDetails(@Path("tv_id") tvId: Long): TvShowDetailData
 
     @GET("/3/tv/{tv_id}/similar")
-    suspend fun getSimilarTvShows(@Path("tv_id") tvId: Long, @Query("page") page: Int): PagedResultData<TvShowItemData>
+    suspend fun getSimilarTvShows(
+        @Path("tv_id") tvId: Long,
+        @Query("page") page: Int
+    ): PagedResultData<TvShowItemData>
 }

@@ -4,6 +4,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.Fragment
@@ -22,6 +24,28 @@ fun View.visible(visible: Boolean, animate: Boolean = true) {
         }
     } else {
         this.visibility = View.GONE
+    }
+}
+
+fun View.visibleWithExpandAnimation(visible: Boolean) {
+    if (visible) {
+        if (visibility != View.VISIBLE) {
+            visible(true, animate = false)
+            val expandIn: Animation = AnimationUtils.loadAnimation(
+                context,
+                resources.getIdentifier("expand_in", "anim", context.packageName)
+            )
+            startAnimation(expandIn)
+        }
+    } else {
+        if (visibility != View.GONE) {
+            val expandIn: Animation = AnimationUtils.loadAnimation(
+                context,
+                resources.getIdentifier("expand_out", "anim", context.packageName)
+            )
+            startAnimation(expandIn)
+            visible(false, animate = false)
+        }
     }
 }
 
