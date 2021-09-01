@@ -28,29 +28,29 @@ class TvShowDetailViewModelTest {
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
 
-    private lateinit var mViewModel: TvShowListViewModel
-    private lateinit var mMapper: TvShowMapper
+    private lateinit var viewModel: TvShowListViewModel
+    private lateinit var mapper: TvShowMapper
 
     @Mock
-    lateinit var mObserver: Observer<TvShowListState>
+    lateinit var observer: Observer<TvShowListState>
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mMapper = TvShowMapper()
-        mViewModel = TvShowListViewModel(
+        mapper = TvShowMapper()
+        viewModel = TvShowListViewModel(
             FakeGetTopRatedTvShowsUseCase(Status.SUCCESSFUL),
-            mMapper,
+            mapper,
             coroutineTestRule.dispatcher
         )
-        mViewModel.data.observeForever(mObserver)
+        viewModel.data.observeForever(observer)
     }
 
     @Test
     fun `getting items on viewModel init with successful result`() {
-        Mockito.verify(mObserver).onChanged(
+        Mockito.verify(observer).onChanged(
             TvShowListState.TvShowListItems(
-                mMapper.mapTvShowItems(
+                mapper.mapTvShowItems(
                     TestUtils.getTvShows(20)
                 )
             )

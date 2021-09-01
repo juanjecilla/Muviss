@@ -12,18 +12,18 @@ import org.junit.Test
 
 internal class RepositoryImplTest : BaseTest() {
 
-    private lateinit var mRepository: RepositoryImpl
+    private lateinit var repository: RepositoryImpl
 
     @Before
     override fun setup() {
         super.setup()
-        mRepository = RepositoryImpl(RemoteDataSourceImpl(api), DataEntityMapper())
+        repository = RepositoryImpl(RemoteDataSourceImpl(api), DataEntityMapper())
     }
 
     @Test
     fun `get top rated list with succesful results`() {
         runBlocking {
-            val results = mRepository.getTopRatedTvShows(1)
+            val results = repository.getTopRatedTvShows(1)
             results.collect {
                 Truth.assertThat(it).isNotNull()
                 Truth.assertThat(it).isInstanceOf(ResultWrapperEntity.Success::class.java)
