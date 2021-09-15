@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import coil.load
 import com.scallop.muviss.R
 import com.scallop.muviss.databinding.FragmentTvShowDetailSimilarBinding
 import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.ui.commons.viewBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TvShowDetailSimilarFragment : Fragment() {
 
-    private val viewModel: TvShowDetailViewModel by sharedViewModel()
+    private val viewModel: TvShowDetailViewModel by viewModels()
     private val binding by viewBinding<FragmentTvShowDetailSimilarBinding>()
 
     private lateinit var tvShow: TvShowItem

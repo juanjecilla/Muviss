@@ -17,6 +17,7 @@ object TestUtils {
         id = i.toLong(),
         name = "Title $i",
         posterPath = "poster $i",
-        voteAverage = i.toDouble()
+        voteAverage = i.toDouble(),
+        overview = "Overview $i"
     )
 }

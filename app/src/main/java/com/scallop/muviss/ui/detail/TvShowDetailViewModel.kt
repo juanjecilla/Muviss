@@ -12,18 +12,20 @@ import com.scallop.muviss.domain.usecases.GetSimilarTvShowsUseCase
 import com.scallop.muviss.domain.usecases.GetTvShowDetailsBaseUseCase
 import com.scallop.muviss.domain.usecases.GetTvShowDetailsUseCase
 import com.scallop.muviss.mappers.TvShowMapper
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TvShowDetailViewModel(
-    private val detailsUseCase: GetTvShowDetailsBaseUseCase,
-    private val similarUseCase: GetSimilarTvShowsBaseUseCase,
+@HiltViewModel
+class TvShowDetailViewModel @Inject constructor(
+    private val detailsUseCase: @JvmSuppressWildcards GetTvShowDetailsBaseUseCase,
+    private val similarUseCase: @JvmSuppressWildcards GetSimilarTvShowsBaseUseCase,
     private val mapper: TvShowMapper,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _data = MutableLiveData<TvShowDetailState>()

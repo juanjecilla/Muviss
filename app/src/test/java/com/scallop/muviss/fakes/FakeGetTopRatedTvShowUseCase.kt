@@ -1,11 +1,11 @@
 package com.scallop.muviss.fakes
 
-import com.scallop.muviss.utils.Status
 import com.scallop.muviss.TestUtils
 import com.scallop.muviss.domain.entities.ResultWrapperEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsBaseUseCase
 import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
+import com.scallop.muviss.utils.Status
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

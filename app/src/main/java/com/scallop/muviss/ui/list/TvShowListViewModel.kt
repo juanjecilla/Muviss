@@ -11,17 +11,19 @@ import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
 import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.mappers.TvShowMapper
 import com.scallop.muviss.ui.list.TvShowListFragment.Companion.STARTING_PAGE_INDEX
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TvShowListViewModel(
-    private val useCase: GetTopRatedTvShowsBaseUseCase,
+@HiltViewModel
+class TvShowListViewModel @Inject constructor(
+    private val useCase: @JvmSuppressWildcards GetTopRatedTvShowsBaseUseCase,
     private val mapper: TvShowMapper,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _data = MutableLiveData<TvShowListState>()

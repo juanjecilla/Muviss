@@ -7,8 +7,9 @@ import com.scallop.muviss.domain.entities.TvShowSeasonEntity
 import com.scallop.muviss.entities.TvShowDetail
 import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.entities.TvShowSeason
+import javax.inject.Inject
 
-class TvShowMapper {
+class TvShowMapper @Inject constructor() {
 
     fun mapResults(entity: ResultWrapperEntity.Success<List<TvShowItemEntity>>) =
         ResultWrapperEntity.Success(

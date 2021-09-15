@@ -6,14 +6,14 @@ import com.scallop.muviss.domain.entities.TvShowItemEntity
 import com.scallop.muviss.domain.repositories.TheMovieDbRepository
 import kotlinx.coroutines.flow.Flow
 
-typealias GetSimilarTvShowsBaseUseCase = BaseUseCase<GetSimilarTvShowsUseCase.Params, Flow<ResultWrapperEntity<List<TvShowItemEntity>>>>
+typealias GetSimilarTvShowsBaseUseCase = BaseUseCase<GetSimilarTvShowsUseCase.Params, Flow<@JvmSuppressWildcards ResultWrapperEntity<List<TvShowItemEntity>>>>
 
 class GetSimilarTvShowsUseCase(
-    private val mRepository: TheMovieDbRepository
+    private val repository: TheMovieDbRepository
 ) : GetSimilarTvShowsBaseUseCase {
 
     override suspend fun invoke(params: Params) =
-        mRepository.getSimilarRatedTvShows(params.id, params.page)
+        repository.getSimilarRatedTvShows(params.id, params.page)
 
     data class Params(
         val id: Long,

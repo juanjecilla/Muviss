@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 
-class RemoteDataSourceImpl(private val api: TheMovieDbApi) : RemoteDataSource {
+class RemoteDataSourceImpl constructor(private val api: TheMovieDbApi) : RemoteDataSource {
 
     override suspend fun getTopRatedTvShows(
         page: Int
