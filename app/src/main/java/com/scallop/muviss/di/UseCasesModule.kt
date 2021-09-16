@@ -8,8 +8,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -17,11 +15,6 @@ import kotlinx.coroutines.Dispatchers
 abstract class UseCasesModule {
 
     companion object {
-        @Provides
-        fun provideIOCoroutineDispatcher(): CoroutineDispatcher {
-            return Dispatchers.IO
-        }
-
         @Provides
         fun provideGetSimilarTvShowsUseCase(
             repositoryImpl: RepositoryImpl
