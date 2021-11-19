@@ -25,7 +25,6 @@ class RepositoryImpl(
                     it as ResultWrapperData.Success<List<TvShowItemData>>
                 )
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }
@@ -37,7 +36,6 @@ class RepositoryImpl(
                     it as ResultWrapperData.Success<TvShowDetailData>
                 )
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }
@@ -51,7 +49,6 @@ class RepositoryImpl(
                 is ResultWrapperData.Success<*> ->
                     mapper.mapResults(it as ResultWrapperData.Success<List<TvShowItemData>>)
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }
