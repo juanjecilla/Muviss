@@ -55,7 +55,6 @@ class TvShowDetailViewModel @Inject constructor(
                             it.exception.toString()
                         )
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }.collect()
         }
@@ -86,7 +85,6 @@ class TvShowDetailViewModel @Inject constructor(
                             it.exception.toString()
                         )
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }.collect()
         }
