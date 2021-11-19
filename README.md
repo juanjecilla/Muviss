@@ -33,3 +33,5 @@ The project is structured following Clean architecture principles splitted into 
     + Integrate Room library to save local data from the user.
 - Move API keys to NDK.
     + NDK approach increases the security and prevent API key extraction decompiling the APK.
+- Check Splash API
+    + Create Splash screen using the new API.
