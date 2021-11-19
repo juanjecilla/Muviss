@@ -23,5 +23,4 @@ class FakeGetTopRatedTvShowsUseCase(val status: Status) :
     override suspend fun invoke(params: GetTopRatedTvShowsUseCase.Params): Flow<ResultWrapperEntity<List<TvShowItemEntity>>> {
         return execute(params)
     }
-
 }

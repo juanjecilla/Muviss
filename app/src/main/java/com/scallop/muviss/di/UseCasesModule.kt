@@ -2,7 +2,12 @@ package com.scallop.muviss.di
 
 import com.scallop.muviss.data.repository.RepositoryImpl
 import com.scallop.muviss.domain.repositories.TheMovieDbRepository
-import com.scallop.muviss.domain.usecases.*
+import com.scallop.muviss.domain.usecases.GetSimilarTvShowsBaseUseCase
+import com.scallop.muviss.domain.usecases.GetSimilarTvShowsUseCase
+import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsBaseUseCase
+import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
+import com.scallop.muviss.domain.usecases.GetTvShowDetailsBaseUseCase
+import com.scallop.muviss.domain.usecases.GetTvShowDetailsUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
