@@ -50,7 +50,6 @@ class TvShowListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         layoutManager = GridLayoutManager(context, 2)
 
         endlessRecyclerViewScrollListener = object : EndlessRecyclerViewScrollListener(
@@ -81,7 +80,6 @@ class TvShowListFragment : Fragment() {
                     is TvShowListState.TvShowListFailure -> {
                         Toast.makeText(context, it.failure, Toast.LENGTH_LONG).show()
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }
         })

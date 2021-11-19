@@ -54,19 +54,19 @@ class TvShowDetailFragment : Fragment() {
 
             detailViewPager.adapter = adapter
             detailViewPager.registerOnPageChangeCallback(object :
-                ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    if (position > adapter.itemCount - THRESHOLD) {
-                        viewModel.getSimilarTvShows(
-                            tvShowId,
-                            (adapter.itemCount / Properties.ITEMS_PER_PAGE) + 1
-                        )
-                    }
+                    ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        if (position > adapter.itemCount - THRESHOLD) {
+                            viewModel.getSimilarTvShows(
+                                tvShowId,
+                                (adapter.itemCount / Properties.ITEMS_PER_PAGE) + 1
+                            )
+                        }
 
-                    seeDetailsButton.visibleWithExpandAnimation(position != 0)
-                }
-            })
+                        seeDetailsButton.visibleWithExpandAnimation(position != 0)
+                    }
+                })
 
             seeDetailsButton.setOnClickListener {
                 val currentTvShowId = adapter.getItemIdAtPosition(detailViewPager.currentItem)
@@ -97,7 +97,6 @@ class TvShowDetailFragment : Fragment() {
                     is TvShowDetailState.TvShowDetailFailure -> {
                         Toast.makeText(context, it.failure, Toast.LENGTH_LONG).show()
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }
         })

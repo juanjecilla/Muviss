@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 open class BaseTest {
 
-
     lateinit var api: TheMovieDbApi
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -55,5 +54,4 @@ open class BaseTest {
             .readTimeout(60, TimeUnit.SECONDS)
             .build()
     }
-
 }

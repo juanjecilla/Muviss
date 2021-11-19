@@ -21,9 +21,10 @@ class RepositoryImpl(
     ): Flow<ResultWrapperEntity<List<TvShowItemEntity>>> {
         return remote.getTopRatedTvShows(page).map {
             when (it) {
-                is ResultWrapperData.Success<*> -> mapper.mapResults(it as ResultWrapperData.Success<List<TvShowItemData>>)
+                is ResultWrapperData.Success<*> -> mapper.mapResults(
+                    it as ResultWrapperData.Success<List<TvShowItemData>>
+                )
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }
@@ -31,9 +32,10 @@ class RepositoryImpl(
     override suspend fun getTvShowDetails(id: Long): Flow<ResultWrapperEntity<TvShowDetailEntity>> {
         return remote.getTvShowDetails(id).map {
             when (it) {
-                is ResultWrapperData.Success<*> -> mapper.mapTvShowDetailResult(it as ResultWrapperData.Success<TvShowDetailData>)
+                is ResultWrapperData.Success<*> -> mapper.mapTvShowDetailResult(
+                    it as ResultWrapperData.Success<TvShowDetailData>
+                )
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }
@@ -44,9 +46,9 @@ class RepositoryImpl(
     ): Flow<ResultWrapperEntity<List<TvShowItemEntity>>> {
         return remote.getSimilarTvShows(id, page).map {
             when (it) {
-                is ResultWrapperData.Success<*> -> mapper.mapResults(it as ResultWrapperData.Success<List<TvShowItemData>>)
+                is ResultWrapperData.Success<*> ->
+                    mapper.mapResults(it as ResultWrapperData.Success<List<TvShowItemData>>)
                 is ResultWrapperData.GenericError -> mapper.mapException(it)
-                else -> throw IllegalArgumentException()
             }
         }
     }

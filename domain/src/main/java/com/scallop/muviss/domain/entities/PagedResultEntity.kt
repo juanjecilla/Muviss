@@ -1,6 +1,5 @@
 package com.scallop.muviss.domain.entities
 
-
 data class PagedResultEntity<T>(
     var page: Int?,
     var totalResults: Int?,

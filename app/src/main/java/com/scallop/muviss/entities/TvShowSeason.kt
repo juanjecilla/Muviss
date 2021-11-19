@@ -1,6 +1,5 @@
 package com.scallop.muviss.entities
 
-
 data class TvShowSeason(
     var id: Long?,
     var name: String?,

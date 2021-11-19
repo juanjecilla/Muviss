@@ -23,10 +23,8 @@ class ActivityViewBindingDelegate<T : ViewBinding>(
                     }
                 })
             }
-
         })
     }
-
 
     @Suppress("UNCHECKED_CAST")
     override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {

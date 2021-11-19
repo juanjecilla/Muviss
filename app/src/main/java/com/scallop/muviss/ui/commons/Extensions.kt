@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 fun View.visible(visible: Boolean, animate: Boolean = true) {
     if (visible) {
         if (animate) {
-            animate().alpha(1f).setDuration(300).setListener(object : AnimatorListenerAdapter() {
+            animate().alpha(OPAQUE).setDuration(DEFAULT_DURATION).setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(animation: Animator) {
                     super.onAnimationStart(animation)
                     visibility = View.VISIBLE
@@ -94,3 +94,6 @@ inline fun <S, T : S> List<T>.reduceRightDefault(
     return if (isEmpty()) defaultIfEmpty
     else reduceRight(operation)
 }
+
+const val DEFAULT_DURATION = 300L
+const val OPAQUE = 1f

@@ -8,20 +8,21 @@ import com.scallop.muviss.domain.usecases.GetTopRatedTvShowsUseCase
 import com.scallop.muviss.utils.Status
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.lang.IllegalStateException
 
-class FakeGetTopRatedTvShowsUseCase(val status: Status) :
+class FakeGetTopRatedTvShowsUseCase(private val status: Status) :
     GetTopRatedTvShowsBaseUseCase {
 
     private fun execute(params: GetTopRatedTvShowsUseCase.Params): Flow<ResultWrapperEntity<List<TvShowItemEntity>>> =
         flow {
             when (status) {
                 Status.SUCCESSFUL -> emit(ResultWrapperEntity.Success(TestUtils.getTvShows(params.page * 20)))
-                else -> throw Exception("Something went wrong")
+                else -> throw IllegalStateException("Something went wrong")
             }
         }
 
-    override suspend fun invoke(params: GetTopRatedTvShowsUseCase.Params): Flow<ResultWrapperEntity<List<TvShowItemEntity>>> {
+    override suspend fun invoke(params: GetTopRatedTvShowsUseCase.Params):
+        Flow<ResultWrapperEntity<List<TvShowItemEntity>>> {
         return execute(params)
     }
-
 }

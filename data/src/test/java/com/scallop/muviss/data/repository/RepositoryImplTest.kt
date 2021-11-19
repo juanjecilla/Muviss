@@ -9,7 +9,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-
 internal class RepositoryImplTest : BaseTest() {
 
     private lateinit var repository: RepositoryImpl

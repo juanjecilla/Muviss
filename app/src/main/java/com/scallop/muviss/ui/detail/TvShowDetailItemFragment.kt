@@ -25,7 +25,6 @@ class TvShowDetailItemFragment : Fragment() {
             tvShow = it
 
             adapter = TvShowSeasonAdapter {
-
             }
             it.seasons?.let { seasons ->
                 adapter.submitList(seasons.sortedBy { season -> season.seasonNumber })

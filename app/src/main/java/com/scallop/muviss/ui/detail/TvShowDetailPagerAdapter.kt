@@ -25,7 +25,7 @@ class TvShowDetailPagerAdapter(
         return when (val item = data[position]) {
             is TvShowDetail -> TvShowDetailItemFragment.newInstance(item)
             is TvShowItem -> TvShowDetailSimilarFragment.newInstance(item)
-            else -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException("Not valid type")
         }
     }
 
@@ -45,7 +45,7 @@ class TvShowDetailPagerAdapter(
         return when (val item = data[position]) {
             is TvShowDetail -> item.id
             is TvShowItem -> item.id
-            else -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException("Not valid type")
         }
     }
 }
