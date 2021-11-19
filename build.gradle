@@ -3,6 +3,8 @@ buildscript {
     ext {
         kotlin_version = "1.6.0"
         ktlintPluginVersion = "10.2.0"
+        // https://github.com/detekt/detekt/releases
+        detektVersion = "1.18.1"
     }
     repositories {
         google()
@@ -19,6 +21,7 @@ buildscript {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:$ktlintPluginVersion")
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -31,4 +34,5 @@ task clean(type: Delete) {
 
 subprojects {
     apply from: "../buildscripts/ktlint.gradle"
+    apply from: "../buildscripts/detekt.gradle"
 }

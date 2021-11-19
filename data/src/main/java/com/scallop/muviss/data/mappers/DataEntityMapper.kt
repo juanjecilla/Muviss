@@ -9,7 +9,7 @@ import com.scallop.muviss.domain.entities.TvShowDetailEntity
 import com.scallop.muviss.domain.entities.TvShowItemEntity
 import com.scallop.muviss.domain.entities.TvShowSeasonEntity
 
-class DataEntityMapper constructor() {
+class DataEntityMapper {
 
     fun mapResults(data: ResultWrapperData.Success<List<TvShowItemData>>) =
         ResultWrapperEntity.Success(

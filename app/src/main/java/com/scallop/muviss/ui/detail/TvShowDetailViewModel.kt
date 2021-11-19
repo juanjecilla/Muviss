@@ -43,7 +43,11 @@ class TvShowDetailViewModel @Inject constructor(
                 when (it) {
                     is ResultWrapperEntity.Success<*> -> {
                         _data.value =
-                            TvShowDetailState.TvShowDetailItems(mapper.mapTvShowDetailResult(it as ResultWrapperEntity.Success<TvShowDetailEntity>).value)
+                            TvShowDetailState.TvShowDetailItems(
+                                mapper.mapTvShowDetailResult(
+                                    it as ResultWrapperEntity.Success<TvShowDetailEntity>
+                                ).value
+                            )
                     }
 
                     is ResultWrapperEntity.GenericError -> {
@@ -69,7 +73,12 @@ class TvShowDetailViewModel @Inject constructor(
                 when (it) {
                     is ResultWrapperEntity.Success<*> -> {
                         _data.value =
-                            TvShowDetailState.TvShowDetailRelatedItems(mapper.mapResults(it as ResultWrapperEntity.Success<List<TvShowItemEntity>>).value)
+                            TvShowDetailState.TvShowDetailRelatedItems(
+                                mapper.mapResults(
+                                    it as ResultWrapperEntity.Success<List<TvShowItemEntity>>
+                                )
+                                    .value
+                            )
                     }
 
                     is ResultWrapperEntity.GenericError -> {

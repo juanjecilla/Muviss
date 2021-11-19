@@ -6,7 +6,9 @@ import com.scallop.muviss.domain.entities.TvShowDetailEntity
 import com.scallop.muviss.domain.repositories.TheMovieDbRepository
 import kotlinx.coroutines.flow.Flow
 
-typealias GetTvShowDetailsBaseUseCase = BaseUseCase<GetTvShowDetailsUseCase.Params, Flow<@JvmSuppressWildcards ResultWrapperEntity<TvShowDetailEntity>>>
+typealias GetTvShowDetailsBaseUseCase =
+    BaseUseCase<GetTvShowDetailsUseCase.Params,
+        Flow<@JvmSuppressWildcards ResultWrapperEntity<TvShowDetailEntity>>>
 
 class GetTvShowDetailsUseCase(
     private val repository: TheMovieDbRepository
