@@ -97,7 +97,6 @@ class TvShowDetailFragment : Fragment() {
                     is TvShowDetailState.TvShowDetailFailure -> {
                         Toast.makeText(context, it.failure, Toast.LENGTH_LONG).show()
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }
         })

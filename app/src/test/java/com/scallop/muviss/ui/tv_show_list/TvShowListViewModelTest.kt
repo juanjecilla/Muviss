@@ -34,9 +34,11 @@ class TvShowListViewModelTest {
     @Mock
     lateinit var observer: Observer<TvShowListState>
 
+    lateinit var openMocks: AutoCloseable
+
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        openMocks = MockitoAnnotations.openMocks(this)
         mapper = TvShowMapper()
         viewModel = TvShowListViewModel(
             FakeGetTopRatedTvShowsUseCase(Status.SUCCESSFUL),

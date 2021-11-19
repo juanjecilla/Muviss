@@ -55,7 +55,6 @@ class TvShowListViewModel @Inject constructor(
                             it.exception.toString()
                         )
                     }
-                    else -> throw IllegalArgumentException()
                 }
             }.collect()
         }
