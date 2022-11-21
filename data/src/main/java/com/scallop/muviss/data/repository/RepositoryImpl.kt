@@ -13,7 +13,8 @@ import kotlinx.coroutines.flow.map
 
 class RepositoryImpl(
     private val remote: RemoteDataSource,
-    private val mapper: DataEntityMapper
+    private val mapper: DataEntityMapper,
+    private val filter: TvShowFilter
 ) : TheMovieDbRepository {
 
     override suspend fun getTopRatedTvShows(

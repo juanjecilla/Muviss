@@ -1,5 +1,6 @@
 package com.scallop.muviss.ui.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,11 +13,9 @@ import com.scallop.muviss.entities.TvShowItem
 import com.scallop.muviss.mappers.TvShowMapper
 import com.scallop.muviss.ui.list.TvShowListFragment.Companion.STARTING_PAGE_INDEX
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -56,6 +55,26 @@ class TvShowListViewModel @Inject constructor(
                         )
                     }
                 }
+
+
+                Log.d("HELLO","HELLO1")
+                val a = async {
+                    delay(100)
+                    1
+                }
+                val b = async {
+                    delay(100)
+                    1
+                }
+                val c = async {
+                    delay(100)
+                    1
+                }
+                Log.d("HELLO","HELLO2")
+
+                Log.d("HELLO","${a.await()} ${b.await()} ${c.await()}")
+
+
             }.collect()
         }
     }

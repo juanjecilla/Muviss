@@ -7,3 +7,8 @@ data class TvShowItemEntity(
     var voteAverage: Double?,
     var overview: String?,
 )
+
+// If today is Monday -> Return entities with voteAverage > 3,
+// Tuesday -> name starts with A
+// Wednesday -> id%2 == 0
+// Else ->
