@@ -1,4 +1,4 @@
-package com.scallop.muviss.ui.tv_show_list
+package com.scallop.muviss.ui.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
@@ -6,8 +6,6 @@ import com.scallop.muviss.CoroutineTestRule
 import com.scallop.muviss.TestUtils
 import com.scallop.muviss.fakes.FakeGetTopRatedTvShowsUseCase
 import com.scallop.muviss.mappers.TvShowMapper
-import com.scallop.muviss.ui.list.TvShowListState
-import com.scallop.muviss.ui.list.TvShowListViewModel
 import com.scallop.muviss.utils.Status
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
