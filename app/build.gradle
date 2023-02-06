@@ -5,6 +5,7 @@ plugins {
     id "kotlin-parcelize"
     id "androidx.navigation.safeargs"
     id "dagger.hilt.android.plugin"
+    id "org.owasp.dependencycheck"
 }
 
 android {
@@ -51,6 +52,7 @@ android {
             version '3.10.2'
         }
     }
+    namespace 'com.scallop.muviss'
 }
 
 kapt {
@@ -103,11 +105,26 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:3.8.0")
-    testImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0")
     testImplementation("io.mockk:mockk:1.10.4")
     testImplementation("com.google.truth:truth:1.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+}
+
+dependencyCheck {
+    failBuildOnCVSS = 0
+    scanConfigurations = configurations.findAll {
+        !it.name.startsWithAny('androidTest', 'test', 'debug') &&
+                it.name.contains("DependenciesMetadata") && (
+                it.name.startsWithAny("api", "implementation", "runtimeOnly") ||
+                        it.name.contains("Api") ||
+                        it.name.contains("Implementation") ||
+                        it.name.contains("RuntimeOnly")
+        )
+    }.collect {
+        it.name
+    }
 }
